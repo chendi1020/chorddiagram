@@ -8215,13 +8215,24 @@ d3 = function() {
         info
           .attr('transform', 'translate(' + (bbox.x + bbox.width / 2) + ',' + (bbox.y + bbox.height / 2) + ')');
 
+          if (d.inflow>0) {
         var text = info.select('.text').selectAll('text')
           .data([
             data.names[d.id],
             'Total In: ' + formatNumber(d.inflow)
             /*,'Total Out: ' + formatNumber(d.outflow)*/
           ]);
-        text.enter().append('text');
+        text.enter().append('text')};
+          
+            if (d.outflow>0) {
+        var text = info.select('.text').selectAll('text')
+          .data([
+            data.names[d.id],
+            /*'Total In: ' + formatNumber(d.inflow)*/
+            'Total Out: ' + formatNumber(d.outflow)
+          ]);
+        text.enter().append('text')};
+          
         text
           .text(function(t) { return t; })
           .style({

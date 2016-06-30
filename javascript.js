@@ -8218,8 +8218,8 @@ d3 = function() {
         var text = info.select('.text').selectAll('text')
           .data([
             data.names[d.id],
-            'Total In: ' + formatNumber(d.inflow),
-            'Total Out: ' + formatNumber(d.outflow)
+            'Total In: ' + formatNumber(d.inflow)
+            /*,'Total Out: ' + formatNumber(d.outflow)*/
           ]);
         text.enter().append('text');
         text

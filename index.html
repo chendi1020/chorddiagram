@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang=en>
 <head>
   <meta charset=utf-8>
 	<title>MSU Major Movers</title>
-	<meta name=description content="Undergraduate Major Movers: MSU First Time Undergraduates First Major vs. Degree Major">
+	<meta name=description content="Undergraduate Major Movers: GCSU Students Declaring a New Major in Fall Terms">
 	<meta name=viewport content="width=device-width, initial-scale=1.0">
 	<!--[if lt IE 9]><script src=/dashboards/majors/html5shiv-printshiv.js></script><![endif]-->
   <script src="./javascript.js"></script>
@@ -24,12 +23,12 @@
 }
 
 body {
-  font: 15px/1.8em 'CartoGothic', Arial, sans-serif;
+  font: 14px/1.8em 'CartoGothic', Arial, sans-serif;
   width: 100%;
   margin: 0;
-  background-color: #bababa;
+  background-color: #6D6B6B;
   color: #000000;
-  line-height: 1.7em
+  line-height: 1.0em
 }
 
 img {
@@ -45,7 +44,7 @@ img {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: #bababa;
+  background-color: none;
   padding: 20px;
 }
 
@@ -60,7 +59,6 @@ img {
 a, a:visited, a:hover, a:focus, a:link {
   color: #6A93BF;
   text-decoration: none;
-    text-align: center;
 }
 
 a:hover {
@@ -71,7 +69,7 @@ a:hover {
   margin: 0 auto;
   min-width: 500px;
   max-width: 1100px;
-  background-color: #bababa;
+  background-color: #FFFEFF;
   -moz-box-shadow: 0 0 15px #000;
   -webkit-box-shadow: 0 0 15px #000;
   box-shadow: 0 0 15px #000;
@@ -90,19 +88,19 @@ header, footer {
   margin: 0;
 }
 header {
-  padding: 60px 30px 0 30px;
+  padding: 10px 0px 0 0px;
 }
 footer {
-  padding: 0 30px 0 30px;
+  padding: 0 10px 0 10px;
 }
 
 h1 {
   font-family: 'CartoGothic', Arial, sans-serif;
   font-weight: bold;
-  font-size: 40px;
-  line-height: 2.3ex;
+  font-size: 20px;
+  line-height: .3ex;
   text-transform: uppercase;
-  margin: 0 0 35px 0;
+  margin: 0 0 5px 0;
 }
 
 .badge {
@@ -134,38 +132,35 @@ hr {
 }
 
 #timeline {
-  margin: 15px auto;
+  margin: 5px auto;
   text-align: center;
-  position: absolute;
-  top: 5px;
-  left: 0;
-  right: 0;
+  padding: 8px 30px 5px 30px;
+  position: fixed;
+  top: 100px;
+  left: 10px;
+  right: 10px;
+
 }
 main {
   position: relative;
 }
 
 .year label {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: normal;
   border: 1px solid #CDCDCD;
   color: #6D6B6B;
   background-color: #D8D8D8;
-  padding: 5px 30px 5px 30px;
-  margin: 0 auto;
+  padding: 8px 30px 5px 30px;
+  margin: 0 5px;
   cursor: pointer;
   background-image: -webkit-linear-gradient(top, #D8D8D8, #CDCDCD);
   background-image:    -moz-linear-gradient(top, #D8D8D8, #CDCDCD);
   background-image:     -ms-linear-gradient(top, #D8D8D8, #CDCDCD);
   background-image:      -o-linear-gradient(top, #D8D8D8, #CDCDCD);
   background-image:   linear-gradient(to bottom, #D8D8D8, #CDCDCD);
-  border-radius: 15px;
-    text-align: center;
-    position: absolute;
-    left: 500px;
-    width: 60px;
-    height: 20px
-   
+    border-radius: 15px;
+ overflow: visible;
 }
 
 .year input {
@@ -263,7 +258,6 @@ a.button {
   background-color: ##CCD4DD;
   padding: 3px 25px 1px 25px;
   margin: 0 auto;
-
   cursor: pointer;
   background-image: -webkit-linear-gradient(top, #CCD4DD, #BCC3CC);
   background-image:    -moz-linear-gradient(top, #CCD4DD, #BCC3CC);
@@ -341,25 +335,23 @@ text {
   fill: #333;
 }
 .group-arc + text {
-  -webkit-transition: opacity 0.75;
-  -moz-transition: opacity 0.75;
-  -o-transition: opacity 0.75;
-  transition: opacity 0.75;
- 
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 .group-arc.animate + text {
   opacity: 0;
-
 }
 #circle path {
-  -webkit-transition: opacity 0.75;
-  -moz-transition: opacity 0.75;
-  -o-transition: opacity 0.75;
-  transition: opacity 0.75;
+  -webkit-transition: opacity 0.4s;
+  -moz-transition: opacity 0.4s;
+  -o-transition: opacity 0.4s;
+  transition: opacity 0.4s;
 }
 #circle:hover path.fade,
 #circle path.unselected {
-  opacity: 0.02;
+  opacity: 0.05;
   pointer-events: none;
 }
 text.fade {
@@ -370,8 +362,7 @@ text.fade {
 }
 text.region {
   font-family: 'CartoGothic', Arial, sans-serif;
-  font-size: 13px;
-  
+  font-size: 14px;
 }
 .chord {
   opacity: 0.75;
@@ -387,7 +378,7 @@ text.region {
         text-shadow:none !important;
 		background:transparent !important;
     }
-	html { background-color:#bababa; }
+	html { background-color:#fff; }
 	/* Hide navigation */
 	nav { display:none; }
 
@@ -420,14 +411,13 @@ text.region {
   <div id=container class="container">
   
    	<header role="banner">
-  		<h1 style="text-align:center">Undergraduate Major Movers</h1><h2 style="text-align:center"><i>Degree Majors of MSU First Time Undergraduates Whose First Major as No Preference</i></h2><h3 style="text-align:center">Cohort : 2009</h3>
+        <h1 style="text-align:center">Undergraduate Major Movers <u>(click the arcs to drill down to major level)</u></h1><h2 style="text-align:center"><i>Degree Majors of MSU First Time Undergraduates Whose First Major as No Preference</i></h2><h3 style="text-align:center">Cohort : 2005-2009</h3>
 		
 		<!--<div class="lead-in">
 		This visualization shows undergraduate students who changed their major in Fall semesters from 2010 to 2014.
 		</div> -->
 	<hr>
 	</header>	
-
 
 
 
@@ -452,15 +442,15 @@ myElement.style.opacity = 0.25;
   <div id="diagram"></div>
 
 
-  <script>
+<script>
 
     (function() {
-      var datafile = 'json/data.json';
+      var datafile = 'json/datamultiyr.json';
       var aLittleBit = Math.PI / 100000;
 
  d3.json(datafile, function(data) {
-      var now = "2014";
-      var labelCustom = "Fall ";
+      var now = "2009";
+      var labelCustom = " ";
 
       var chart = Globalmigration.chart(data, {
         element: '#diagram',
@@ -472,7 +462,7 @@ myElement.style.opacity = 0.25;
         layout: {
           threshold: 1,
           labelThreshold: 10,
-		  colors: '800026 00441b 1f78b4 33a02c 49006a e31a1c 252525 41ae76 cab2d6 6a3d9a b15928 e7298a 80cdc1 fe9929    cd3d08 ec8f00 6dae29 683f92 b60275 2058a5 '.split(' ').map(function(c) { return '#' + c; })
+		  colors: '800026 00441b 1f78b4 33a02c 49006a e31a1c 00a592 41ae76 cab2d6 6a3d9a b15928 e7298a 80cdc1  556B2F fe9929    00FFFF '.split(' ').map(function(c) { return '#' + c; })
         }
       });
 

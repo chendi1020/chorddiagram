@@ -6461,7 +6461,7 @@ d3 = function() {
                 []
             ]
         })
-    }, ua.scale.category20 = function() {
+    }, ua.scale.category10 = function() {
         return ua.scale.ordinal().range(Go)
     }, ua.scale.category20 = function() {
         return ua.scale.ordinal().range(Ko)
@@ -8043,7 +8043,7 @@ d3 = function() {
     config.infoPopupDelay = config.infoPopupDelay || 300;
 
 
-    var colors = d3.scale.category20().domain(data.regions);
+    var colors = d3.scale.category10().domain(data.regions);
     if (config.layout.colors) {
       colors.range(config.layout.colors);
     }
@@ -8219,12 +8219,11 @@ d3 = function() {
         var text = info.select('.text').selectAll('text')
           .data([
             data.names[d.id],
-            'Total In: ' + formatNumber(d.inflow)
-            /*,'Total Out: ' + formatNumber(d.outflow)*/
+            'Total In: ' + formatNumber(d.inflow)/*,
+            'Total Out: ' + formatNumber(d.outflow)*/
           ]);
         text.enter().append('text')};
-          
-            if (d.outflow>0) {
+          if (d.outflow>0) {
         var text = info.select('.text').selectAll('text')
           .data([
             data.names[d.id],

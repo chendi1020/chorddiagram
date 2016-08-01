@@ -23,7 +23,7 @@
 }
 
 body {
-  font: 12px/1.8em 'CartoGothic', Arial, sans-serif;
+  font: 10px/1.6em 'CartoGothic', Arial, sans-serif;
   width: 100%;
   margin: 0;
   background-color: #6D6B6B;
@@ -68,7 +68,7 @@ a:hover {
 .container {
   margin: 0 auto;
   min-width: 500px;
-  max-width: 1000px;
+  max-width: 980px;
   background-color: #FFFEFF;
   -moz-box-shadow: 0 0 15px #000;
   -webkit-box-shadow: 0 0 15px #000;
@@ -88,7 +88,7 @@ header, footer {
   margin: 0;
 }
 header {
-  padding: 12px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
 }
 footer {
   padding: 0 10px 0 10px;
@@ -97,7 +97,7 @@ footer {
 h1 {
   font-family: 'CartoGothic', Arial, sans-serif;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px;
   line-height: .3ex;
   text-transform: uppercase;
   margin: 0 0 5px 0;
@@ -316,7 +316,7 @@ a.button:hover {
 
 svg {
   font-size: 12px;
-  max-width: 100%;
+  max-width: 85%;
   vector-effect: non-scaling-stroke;
 }
 .info, .label {
@@ -446,6 +446,7 @@ myElement.style.opacity = 0.25;
 
     (function() {
       var datafile = 'json/datamultiyr.json';
+        
       var aLittleBit = Math.PI / 100000;
 
  d3.json(datafile, function(data) {

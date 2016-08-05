@@ -7533,6 +7533,26 @@ d3 = function() {
       // TODO Allow start and end angle to be specified.
       // TODO Allow padding to be specified as percentage?
       k = (2 * π - padding * n) / k;
+        
+         //test get total out
+        
+        
+        
+         x = 0, i = 1; 
+        
+        while (++i < n) {
+        
+        var outflow1 = 0;
+            var di = 0;
+            //var di=1;
+        x0 = x, j = -1; while (++j < n) {
+          var dj = subgroupIndex[i].source[j],
+             v =  v = matrix[indices[di]][indices[dj]]
+            outflow1 += v;        
+        } 
+        console.log(outflow1);
+        };
+        
 
       // Compute the start and end angle for each group and subgroup.
       // Note: Opera has a bug reordering object literal properties!
@@ -7557,6 +7577,7 @@ d3 = function() {
             value: v
           };
           inflow += v;
+           // console.log(inflow/outflow1);
         }
         var lastX0 = x0;
         // sources
@@ -7575,8 +7596,14 @@ d3 = function() {
             value: v
           };
           outflow += v;
+              
         }
         
+   //test
+  //console.log(inflow/outflow1);
+          
+        
+          
         groups[di] = {
           id: indices[di],
           region: region(indices[di]),
@@ -7586,10 +7613,15 @@ d3 = function() {
           angle: lastX0 + (x - lastX0) / 2,
           inflow: inflow,
           outflow: outflow,
+            inflowPct: inflow/outflow1,
+            outflowPct: outflow/outflow1,
           value: Math.round((x - lastX0) / k)
         };
         x += padding;
       }
+        
+   
+   
 
       // Generate chords for each (non-empty) subgroup-subgroup link.
       i = -1; while (++i < n) {
@@ -7944,7 +7976,7 @@ d3 = function() {
 // Timeline: year selector
 (function(scope) {
   scope.timeline = function(diagram, config) {
-    var years = Object.keys(diagram.data.matrix).map(function(y) { return parseInt(y); }); 
+    var years = Object.keys(diagram.data.matrix).map(function(y) { return y; }); 
 
     config = config || {};
     config.element = config.element || 'body';
@@ -8200,10 +8232,11 @@ d3 = function() {
 
     var infoTimer;
 
+      
     // eg: West Africa: Total inflow 46, Total outflow 2
     function groupInfo(d) {
       var el = this;
-
+ //console.log(d.inflowPct);
       if (infoTimer) {
         clearTimeout(infoTimer);
       }
@@ -8211,7 +8244,7 @@ d3 = function() {
       var bbox = el.getBBox();
       infoTimer = setTimeout(function() {
         var color = d3.select(el).style('fill');
-
+       var formatPercent = d3.format(".1%");
         info
           .attr('transform', 'translate(' + (bbox.x + bbox.width / 2) + ',' + (bbox.y + bbox.height / 2) + ')');
 
@@ -8219,8 +8252,8 @@ d3 = function() {
         var text = info.select('.text').selectAll('text')
           .data([
             data.names[d.id],
-            'Total In: ' + formatNumber(d.inflow)/*,
-            'Total Out: ' + formatNumber(d.outflow)*/
+            'Total In Count: ' + formatNumber(d.inflow),
+            'Total In Percent: ' + formatPercent(d.inflowPct)
           ]);
         text.enter().append('text')};
           if (d.outflow>0) {
@@ -8228,7 +8261,8 @@ d3 = function() {
           .data([
             data.names[d.id],
             /*'Total In: ' + formatNumber(d.inflow)*/
-            'Total Out: ' + formatNumber(d.outflow)
+            'Total Out Count: ' + formatNumber(d.outflow),
+            'Total Out percent: ' + formatPercent(d.outflowPct)
           ]);
         text.enter().append('text')};
           
@@ -8256,8 +8290,14 @@ d3 = function() {
           .transition()
           .attr('opacity', 1);
       }, config.infoPopupDelay);
+         
     }
 
+      
+        
+        
+    // console.log(data.matrix[2005].value  );
+     
     // chord info
     // eg: West Asia → Pacific: 46
     function chordInfo(d) {
@@ -8275,10 +8315,14 @@ d3 = function() {
           .attr('opacity', 0)
           .transition()
           .attr('opacity', 1);
-
+          
+   
+   
+           
         var text = info.select('.text').selectAll('text')
           .data([
-            data.names[d.source.id] + ' → ' + data.names[d.target.id] + ': ' + formatNumber(d.source.value)
+            data.names[d.source.id] + ' → ' + data.names[d.target.id] + ': ' + formatNumber(d.source.value )
+       
           ]);
         text.enter().append('text');
         text.exit().remove();

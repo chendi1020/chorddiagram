@@ -46,10 +46,14 @@ DS2 <- sqldf("select a.org, b.org as org1
              from listall a, listall b
              on 1=1
             ")
+
+
 lvl <- unique(DS2$org1)
-levels(DS2$Org) <- lvl
+neworder <- c(lvl[43:44],lvl[1:42] , lvl[45:155])
+
+levels(DS2$Org) <- neworder
 DS2$org1 <- as.factor(DS2$org1)
-levels(DS2$org1) <- lvl
+levels(DS2$org1) <- neworder
 
 
 names(Agg3)<-names(Agg1)
@@ -182,16 +186,25 @@ for(i in  seq(nrow(xtb_2005_09))) {
 
 
 #region
-listall$id <- as.numeric( row.names(listall)<- 1: nrow(listall))
-reg <-sqldf("select distinct a.Org, a.id-1 as reg
-             from listall a
-            inner join DS1 b
-             on a.Org=b.coll")
-region <- reg %>% group_by(Org) %>% arrange(reg) %>% filter(row_number()==1)
-regionnum <- region$reg
+#last 2 character
+substrRight <- function(x, n){
+  substr(x, nchar(x)-n+1, nchar(x))
+}
 
-listtest <- list("2009"=vec_2009, "2008"=vec_2008, "2007"=vec_2007, "2006"=vec_2006,"2005"=vec_2005, "All"=vec_2005_09)
-list <- list("names"=names, "regions"=regionnum, "matrix"=listtest)
+regionnum <- which(substrRight(neworder,2)=='-c')
+
+
+
+#listall$id <- as.numeric( row.names(listall)<- 1: nrow(listall))
+#reg <-sqldf("select distinct a.Org, a.id-1 as reg
+ #            from listall a
+  #          inner join DS1 b
+   #          on a.Org=b.coll")
+#region <- reg %>% group_by(Org) %>% arrange(reg) %>% filter(row_number()==1)
+#regionnum <- region$reg
+
+listtest <- list("2009"=vec_2009, "2008"=vec_2008, "2007"=vec_2007, "2006"=vec_2006,"2005"=vec_2005, "All"=vec_2005)
+list <- list("names"=neworder, "regions"=regionnum, "matrix"=listtest)
 
 #library(reshape)
 #vec<-reshape(DS2_2008,direction = "wide",id="org1", timevar = "Org")
@@ -204,7 +217,7 @@ require(RJSONIO)
 jsonOut<-toJSON(list)
 #cat(jsonOut)
 
-sink('txt.json')
+sink('txt1.json')
 cat(jsonOut)
 
 sink()
